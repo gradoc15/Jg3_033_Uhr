@@ -21,7 +21,9 @@ public class ClockDisplay extends javax.swing.JFrame
      */
     private Clock c1;
     private Clock c2 = null;
+    private Clock c3 = null;
     private Thread t2 = null;
+    private Thread t3  = null;
     public ClockDisplay()
     {
         initComponents();
@@ -51,10 +53,10 @@ public class ClockDisplay extends javax.swing.JFrame
         lbDescriptionRow1 = new javax.swing.JLabel();
         plDescriptionRow2 = new javax.swing.JPanel();
         rbRow2 = new javax.swing.JRadioButton();
-        jLabel1 = new javax.swing.JLabel();
+        lbDescriptionRow2 = new javax.swing.JLabel();
         plDescriptionRow3 = new javax.swing.JPanel();
         rbRow3 = new javax.swing.JRadioButton();
-        jLabel2 = new javax.swing.JLabel();
+        lbDescriptionRow3 = new javax.swing.JLabel();
         plTime = new javax.swing.JPanel();
         plTimeRow1 = new javax.swing.JPanel();
         plTimeRow2 = new javax.swing.JPanel();
@@ -98,12 +100,12 @@ public class ClockDisplay extends javax.swing.JFrame
         });
         plDescriptionRow2.add(rbRow2, java.awt.BorderLayout.LINE_END);
 
-        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setOpaque(true);
-        plDescriptionRow2.add(jLabel1, java.awt.BorderLayout.CENTER);
+        lbDescriptionRow2.setBackground(new java.awt.Color(0, 0, 0));
+        lbDescriptionRow2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lbDescriptionRow2.setForeground(new java.awt.Color(255, 255, 255));
+        lbDescriptionRow2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbDescriptionRow2.setOpaque(true);
+        plDescriptionRow2.add(lbDescriptionRow2, java.awt.BorderLayout.CENTER);
 
         plDescription.add(plDescriptionRow2);
 
@@ -112,14 +114,21 @@ public class ClockDisplay extends javax.swing.JFrame
 
         rbRow3.setBackground(new java.awt.Color(0, 0, 0));
         rbRow3.setText("    ");
+        rbRow3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                onRb3ActionPerformed(evt);
+            }
+        });
         plDescriptionRow3.add(rbRow3, java.awt.BorderLayout.LINE_END);
 
-        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setOpaque(true);
-        plDescriptionRow3.add(jLabel2, java.awt.BorderLayout.CENTER);
+        lbDescriptionRow3.setBackground(new java.awt.Color(0, 0, 0));
+        lbDescriptionRow3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lbDescriptionRow3.setForeground(new java.awt.Color(255, 255, 255));
+        lbDescriptionRow3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbDescriptionRow3.setOpaque(true);
+        plDescriptionRow3.add(lbDescriptionRow3, java.awt.BorderLayout.CENTER);
 
         plDescription.add(plDescriptionRow3);
 
@@ -166,7 +175,10 @@ public class ClockDisplay extends javax.swing.JFrame
         if(rbRow2.isSelected())
         {
             System.out.println("In here");
-            int add = Integer.parseInt(JOptionPane.showInputDialog("+Stunden"));
+            
+            lbDescriptionRow2.setText(JOptionPane.showInputDialog("Name:"));
+            
+            int add = Integer.parseInt(JOptionPane.showInputDialog("+Stunden der Zeitzone"));
             LocalTime time = c1.getTime();
             time = time.plusHours(add);
             System.out.println(time);
@@ -180,8 +192,37 @@ public class ClockDisplay extends javax.swing.JFrame
         {
             t2.stop();
             plTimeRow2.remove(c2);
+            lbDescriptionRow2.setText("");
+            plTimeRow2.repaint();
         }
     }//GEN-LAST:event_onRn2ActionPerformed
+
+    private void onRb3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_onRb3ActionPerformed
+    {//GEN-HEADEREND:event_onRb3ActionPerformed
+        if(rbRow3.isSelected())
+        {
+            System.out.println("In here");
+            
+            lbDescriptionRow3.setText(JOptionPane.showInputDialog("Name:"));
+            
+            int add = Integer.parseInt(JOptionPane.showInputDialog("+Stunden der Zeitzone"));
+            LocalTime time = c1.getTime();
+            time = time.plusHours(add);
+            System.out.println(time);
+            c3 = new Clock(time);
+            plTimeRow3.add(c3);
+            t3 = new Thread(c3);
+            
+            t3.start();
+        }
+        else
+        {
+            t3.stop();
+            plTimeRow3.remove(c3);
+            lbDescriptionRow3.setText("");
+            plTimeRow3.repaint();
+        }
+    }//GEN-LAST:event_onRb3ActionPerformed
 
     
     public static void main(String args[])
@@ -227,9 +268,9 @@ public class ClockDisplay extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lbDescriptionRow1;
+    private javax.swing.JLabel lbDescriptionRow2;
+    private javax.swing.JLabel lbDescriptionRow3;
     private javax.swing.JPanel plDescription;
     private javax.swing.JPanel plDescriptionRow1;
     private javax.swing.JPanel plDescriptionRow2;
