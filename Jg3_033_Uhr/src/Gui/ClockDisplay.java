@@ -7,6 +7,7 @@ package Gui;
 
 import java.awt.Color;
 import java.time.LocalTime;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,12 +19,13 @@ public class ClockDisplay extends javax.swing.JFrame
     /**
      * Creates new form ClockDisplay
      */
+    private Clock c1;
     public ClockDisplay()
     {
         initComponents();
        
         
-        Clock c1 = new Clock(LocalTime.now());
+        c1 = new Clock(LocalTime.now());
         Clock c2 = new Clock();
         Clock c3 = new Clock();
         
@@ -42,25 +44,82 @@ public class ClockDisplay extends javax.swing.JFrame
     {
 
         plDescription = new javax.swing.JPanel();
+        plDescriptionRow1 = new javax.swing.JPanel();
+        rbRow1 = new javax.swing.JRadioButton();
+        lbDescriptionRow1 = new javax.swing.JLabel();
+        plDescriptionRow2 = new javax.swing.JPanel();
+        rbRow2 = new javax.swing.JRadioButton();
+        jLabel1 = new javax.swing.JLabel();
+        plDescriptionRow3 = new javax.swing.JPanel();
+        rbRow3 = new javax.swing.JRadioButton();
+        jLabel2 = new javax.swing.JLabel();
         plTime = new javax.swing.JPanel();
         plTimeRow1 = new javax.swing.JPanel();
+        plTimeRow2 = new javax.swing.JPanel();
+        plTimeRow3 = new javax.swing.JPanel();
         plImage = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridLayout(1, 3));
 
         plDescription.setBackground(new java.awt.Color(0, 0, 0));
+        plDescription.setLayout(new java.awt.GridLayout(3, 1));
 
-        javax.swing.GroupLayout plDescriptionLayout = new javax.swing.GroupLayout(plDescription);
-        plDescription.setLayout(plDescriptionLayout);
-        plDescriptionLayout.setHorizontalGroup(
-            plDescriptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 370, Short.MAX_VALUE)
-        );
-        plDescriptionLayout.setVerticalGroup(
-            plDescriptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        plDescriptionRow1.setBackground(new java.awt.Color(0, 0, 0));
+        plDescriptionRow1.setLayout(new java.awt.BorderLayout());
+
+        rbRow1.setBackground(new java.awt.Color(0, 0, 0));
+        rbRow1.setText("    ");
+        plDescriptionRow1.add(rbRow1, java.awt.BorderLayout.LINE_END);
+
+        lbDescriptionRow1.setBackground(new java.awt.Color(0, 0, 0));
+        lbDescriptionRow1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lbDescriptionRow1.setForeground(new java.awt.Color(255, 255, 255));
+        lbDescriptionRow1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbDescriptionRow1.setText("Lokale Zeit");
+        lbDescriptionRow1.setOpaque(true);
+        plDescriptionRow1.add(lbDescriptionRow1, java.awt.BorderLayout.CENTER);
+
+        plDescription.add(plDescriptionRow1);
+
+        plDescriptionRow2.setBackground(new java.awt.Color(0, 0, 0));
+        plDescriptionRow2.setLayout(new java.awt.BorderLayout());
+
+        rbRow2.setBackground(new java.awt.Color(0, 0, 0));
+        rbRow2.setText("    ");
+        rbRow2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                onRn2ActionPerformed(evt);
+            }
+        });
+        plDescriptionRow2.add(rbRow2, java.awt.BorderLayout.LINE_END);
+
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setOpaque(true);
+        plDescriptionRow2.add(jLabel1, java.awt.BorderLayout.CENTER);
+
+        plDescription.add(plDescriptionRow2);
+
+        plDescriptionRow3.setBackground(new java.awt.Color(0, 0, 0));
+        plDescriptionRow3.setLayout(new java.awt.BorderLayout());
+
+        rbRow3.setBackground(new java.awt.Color(0, 0, 0));
+        rbRow3.setText("    ");
+        plDescriptionRow3.add(rbRow3, java.awt.BorderLayout.LINE_END);
+
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setOpaque(true);
+        plDescriptionRow3.add(jLabel2, java.awt.BorderLayout.CENTER);
+
+        plDescription.add(plDescriptionRow3);
 
         getContentPane().add(plDescription);
 
@@ -70,6 +129,36 @@ public class ClockDisplay extends javax.swing.JFrame
         plTimeRow1.setBackground(new java.awt.Color(0, 0, 0));
         plTimeRow1.setLayout(new java.awt.GridLayout(1, 1));
         plTime.add(plTimeRow1);
+
+        plTimeRow2.setBackground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout plTimeRow2Layout = new javax.swing.GroupLayout(plTimeRow2);
+        plTimeRow2.setLayout(plTimeRow2Layout);
+        plTimeRow2Layout.setHorizontalGroup(
+            plTimeRow2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 370, Short.MAX_VALUE)
+        );
+        plTimeRow2Layout.setVerticalGroup(
+            plTimeRow2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        plTime.add(plTimeRow2);
+
+        plTimeRow3.setBackground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout plTimeRow3Layout = new javax.swing.GroupLayout(plTimeRow3);
+        plTimeRow3.setLayout(plTimeRow3Layout);
+        plTimeRow3Layout.setHorizontalGroup(
+            plTimeRow3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 370, Short.MAX_VALUE)
+        );
+        plTimeRow3Layout.setVerticalGroup(
+            plTimeRow3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        plTime.add(plTimeRow3);
 
         getContentPane().add(plTime);
 
@@ -90,6 +179,14 @@ public class ClockDisplay extends javax.swing.JFrame
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void onRn2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_onRn2ActionPerformed
+    {//GEN-HEADEREND:event_onRn2ActionPerformed
+        if(rbRow2.isSelected())
+        {
+            
+        }
+    }//GEN-LAST:event_onRn2ActionPerformed
 
     
     public static void main(String args[])
@@ -135,9 +232,20 @@ public class ClockDisplay extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lbDescriptionRow1;
     private javax.swing.JPanel plDescription;
+    private javax.swing.JPanel plDescriptionRow1;
+    private javax.swing.JPanel plDescriptionRow2;
+    private javax.swing.JPanel plDescriptionRow3;
     private javax.swing.JPanel plImage;
     private javax.swing.JPanel plTime;
     private javax.swing.JPanel plTimeRow1;
+    private javax.swing.JPanel plTimeRow2;
+    private javax.swing.JPanel plTimeRow3;
+    private javax.swing.JRadioButton rbRow1;
+    private javax.swing.JRadioButton rbRow2;
+    private javax.swing.JRadioButton rbRow3;
     // End of variables declaration//GEN-END:variables
 }
