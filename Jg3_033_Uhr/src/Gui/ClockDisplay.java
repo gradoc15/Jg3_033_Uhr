@@ -5,6 +5,8 @@
  */
 package Gui;
 
+import java.awt.Color;
+
 /**
  *
  * @author User
@@ -18,7 +20,14 @@ public class ClockDisplay extends javax.swing.JFrame
     public ClockDisplay()
     {
         initComponents();
-        plTimeRow1.add(new Digit());
+       
+        
+        Clock c1 = new Clock();
+        Clock c2 = new Clock();
+        Clock c3 = new Clock();
+        
+        plTimeRow1.add(c1);
+        new Thread(c1).start();
     }
 
     /**
@@ -54,7 +63,7 @@ public class ClockDisplay extends javax.swing.JFrame
 
         plTime.setLayout(new java.awt.GridLayout(3, 1));
 
-        plTimeRow1.setLayout(new java.awt.GridLayout(1, 8));
+        plTimeRow1.setLayout(new java.awt.GridLayout(1, 1));
         plTime.add(plTimeRow1);
 
         getContentPane().add(plTime);

@@ -50,7 +50,7 @@
         <Container class="javax.swing.JPanel" name="plTimeRow1">
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
-            <Property name="columns" type="int" value="8"/>
+            <Property name="columns" type="int" value="1"/>
             <Property name="rows" type="int" value="1"/>
           </Layout>
         </Container>
