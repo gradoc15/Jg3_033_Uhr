@@ -7,6 +7,7 @@ package Gui;
 
 import java.awt.Color;
 import java.time.LocalTime;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,6 +29,9 @@ public class ClockDisplay extends javax.swing.JFrame
     {
         initComponents();
        
+        String icon = this.getClass().getResource("/img/clock.png").getPath();
+        lbClock.setIcon(new ImageIcon(icon));
+        
         
         c1 = new Clock(LocalTime.now());
         
@@ -62,8 +66,13 @@ public class ClockDisplay extends javax.swing.JFrame
         plTimeRow2 = new javax.swing.JPanel();
         plTimeRow3 = new javax.swing.JPanel();
         plImage = new javax.swing.JPanel();
+        lbClock = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1100, 300));
+        setMinimumSize(new java.awt.Dimension(1100, 300));
+        setPreferredSize(new java.awt.Dimension(1100, 300));
+        setResizable(false);
         getContentPane().setLayout(new java.awt.GridLayout(1, 3));
 
         plDescription.setBackground(new java.awt.Color(0, 0, 0));
@@ -152,17 +161,12 @@ public class ClockDisplay extends javax.swing.JFrame
         getContentPane().add(plTime);
 
         plImage.setBackground(new java.awt.Color(0, 0, 0));
+        plImage.setLayout(new java.awt.GridLayout(1, 1));
 
-        javax.swing.GroupLayout plImageLayout = new javax.swing.GroupLayout(plImage);
-        plImage.setLayout(plImageLayout);
-        plImageLayout.setHorizontalGroup(
-            plImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 370, Short.MAX_VALUE)
-        );
-        plImageLayout.setVerticalGroup(
-            plImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        lbClock.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbClock.setText("jLabel1");
+        lbClock.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        plImage.add(lbClock);
 
         getContentPane().add(plImage);
 
@@ -268,6 +272,7 @@ public class ClockDisplay extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel lbClock;
     private javax.swing.JLabel lbDescriptionRow1;
     private javax.swing.JLabel lbDescriptionRow2;
     private javax.swing.JLabel lbDescriptionRow3;
