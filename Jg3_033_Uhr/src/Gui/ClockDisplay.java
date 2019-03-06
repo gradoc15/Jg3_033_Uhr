@@ -6,6 +6,7 @@
 package Gui;
 
 import java.awt.Color;
+import java.time.LocalTime;
 
 /**
  *
@@ -22,7 +23,7 @@ public class ClockDisplay extends javax.swing.JFrame
         initComponents();
        
         
-        Clock c1 = new Clock();
+        Clock c1 = new Clock(LocalTime.now());
         Clock c2 = new Clock();
         Clock c3 = new Clock();
         
@@ -48,11 +49,13 @@ public class ClockDisplay extends javax.swing.JFrame
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridLayout(1, 3));
 
+        plDescription.setBackground(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout plDescriptionLayout = new javax.swing.GroupLayout(plDescription);
         plDescription.setLayout(plDescriptionLayout);
         plDescriptionLayout.setHorizontalGroup(
             plDescriptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 133, Short.MAX_VALUE)
+            .addGap(0, 370, Short.MAX_VALUE)
         );
         plDescriptionLayout.setVerticalGroup(
             plDescriptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -61,18 +64,22 @@ public class ClockDisplay extends javax.swing.JFrame
 
         getContentPane().add(plDescription);
 
+        plTime.setBackground(new java.awt.Color(0, 0, 0));
         plTime.setLayout(new java.awt.GridLayout(3, 1));
 
+        plTimeRow1.setBackground(new java.awt.Color(0, 0, 0));
         plTimeRow1.setLayout(new java.awt.GridLayout(1, 1));
         plTime.add(plTimeRow1);
 
         getContentPane().add(plTime);
 
+        plImage.setBackground(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout plImageLayout = new javax.swing.GroupLayout(plImage);
         plImage.setLayout(plImageLayout);
         plImageLayout.setHorizontalGroup(
             plImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 133, Short.MAX_VALUE)
+            .addGap(0, 370, Short.MAX_VALUE)
         );
         plImageLayout.setVerticalGroup(
             plImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

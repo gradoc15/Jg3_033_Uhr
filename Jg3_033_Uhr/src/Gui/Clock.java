@@ -5,6 +5,7 @@
  */
 package Gui;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.time.LocalTime;
 import javax.swing.ImageIcon;
@@ -61,8 +62,14 @@ public class Clock extends JPanel implements Runnable
         JLabel blank2 = new JLabel();
         blank1.setIcon(new ImageIcon(icon));
         blank2.setIcon(new ImageIcon(icon));
+        blank1.setOpaque(true);
+        blank2.setOpaque(true);
+        blank1.setBackground(Color.black);
+        blank2.setBackground(Color.black);
+        this.setOpaque(true);
+        this.setBackground(Color.black);
         
-        secL = new Digit(6);
+        secL = new Digit(6);       
         secR = new Digit(10);     
         
         minL = new Digit(6);
@@ -101,6 +108,8 @@ public class Clock extends JPanel implements Runnable
                 }
                 
                 System.out.println(hourL.getNumber());
+                
+                time.plusSeconds(1);
                 if(secR.addOne())
                 {
                     if(secL.addOne())
@@ -121,6 +130,11 @@ public class Clock extends JPanel implements Runnable
     }
         
         
+    }
+    
+    public LocalTime getTime()
+    {
+        return time;
     }
     
 }

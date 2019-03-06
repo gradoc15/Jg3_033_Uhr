@@ -5,6 +5,7 @@
  */
 package Gui;
 
+import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -25,7 +26,8 @@ public class Digit extends JLabel
          icon = this.getClass().getResource("/img/0.png").getPath();
          number = 0;
          this.setIcon(new ImageIcon(icon));
-//         this.setText(""+number);
+         this.setOpaque(true);
+         this.setBackground(Color.black);
          
     }
     
