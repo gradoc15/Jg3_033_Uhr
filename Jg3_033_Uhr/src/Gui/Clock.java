@@ -45,8 +45,6 @@ public class Clock extends JPanel implements Runnable
        
     }
     
-    
-    
     public void ini()
     {
         String icon = this.getClass().getResource("/img/blank.png").getPath();
