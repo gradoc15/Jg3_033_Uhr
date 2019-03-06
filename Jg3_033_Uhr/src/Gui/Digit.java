@@ -42,25 +42,25 @@ public class Digit extends JLabel
     public boolean addOne()
     {
         number++;
-        System.out.println("hereIN");
         
         if(number == max)
         {
             number = 0;
-            icon = this.getClass().getResource("/img/" + number + ".png").getPath();
-            this.setIcon(new ImageIcon(icon));
-            repaint();
+            update();
+            
             return true;
         }
-//        this.setText(""+number);
+        
+        update();
+        
+        return false;
+    }
+    
+    public void update()
+    {
         icon = this.getClass().getResource("/img/" + number + ".png").getPath();
         this.setIcon(new ImageIcon(icon));
         repaint();
-        
-        
-        
-        
-        return false;
     }
     
     public int getNumber()
@@ -72,8 +72,8 @@ public class Digit extends JLabel
     {
         this.number = number;
         
-        icon = this.getClass().getResource("/img/" + number + ".png").getPath();
-        this.setIcon(new ImageIcon(icon));
+        update();
+        
         repaint();
     }
     

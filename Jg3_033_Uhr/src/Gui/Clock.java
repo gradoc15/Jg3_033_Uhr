@@ -7,6 +7,7 @@ package Gui;
 
 import java.awt.GridLayout;
 import java.time.LocalTime;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -25,20 +26,42 @@ public class Clock extends JPanel implements Runnable
     private Digit hourL;
     private Digit hourR;
     
+    private LocalTime time;
+    
     public Clock(LocalTime time)
     {
+        this.setLayout(new GridLayout(1, 8));
+        this.time = time;
         ini();
+        
+        secR.setNumber(time.getSecond()%10);
+        secL.setNumber(time.getSecond()/10);
+        
+        minR.setNumber(time.getMinute()%10);
+        minL.setNumber(time.getMinute()/10);
+        
+        hourR.setNumber(time.getHour()%10);
+        hourL.setNumber(time.getHour()/10);
     }
     
     public Clock()
     {
         this.setLayout(new GridLayout(1, 8));
-
+        
         ini();
+       
     }
+    
+    
     
     public void ini()
     {
+        String icon = this.getClass().getResource("/img/blank.png").getPath();
+        JLabel blank1 = new JLabel();
+        JLabel blank2 = new JLabel();
+        blank1.setIcon(new ImageIcon(icon));
+        blank2.setIcon(new ImageIcon(icon));
+        
         secL = new Digit(6);
         secR = new Digit(10);     
         
@@ -50,13 +73,13 @@ public class Clock extends JPanel implements Runnable
         
         this.add(hourL);
         this.add(hourR);
-        
-        this.add(new JLabel(":"));
+
+        this.add(blank1);
         
         this.add(minL);
         this.add(minR);
         
-        this.add(new JLabel(":"));
+        this.add(blank2);
         
         this.add(secL);
         this.add(secR);
