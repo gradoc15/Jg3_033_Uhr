@@ -20,13 +20,15 @@ public class ClockDisplay extends javax.swing.JFrame
      * Creates new form ClockDisplay
      */
     private Clock c1;
+    private Clock c2 = null;
+    private Thread t2 = null;
     public ClockDisplay()
     {
         initComponents();
        
         
         c1 = new Clock(LocalTime.now());
-        Clock c2 = new Clock();
+        
         Clock c3 = new Clock();
         
         plTimeRow1.add(c1);
@@ -131,33 +133,11 @@ public class ClockDisplay extends javax.swing.JFrame
         plTime.add(plTimeRow1);
 
         plTimeRow2.setBackground(new java.awt.Color(0, 0, 0));
-
-        javax.swing.GroupLayout plTimeRow2Layout = new javax.swing.GroupLayout(plTimeRow2);
-        plTimeRow2.setLayout(plTimeRow2Layout);
-        plTimeRow2Layout.setHorizontalGroup(
-            plTimeRow2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 370, Short.MAX_VALUE)
-        );
-        plTimeRow2Layout.setVerticalGroup(
-            plTimeRow2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
+        plTimeRow2.setLayout(new java.awt.GridLayout(1, 1));
         plTime.add(plTimeRow2);
 
         plTimeRow3.setBackground(new java.awt.Color(0, 0, 0));
-
-        javax.swing.GroupLayout plTimeRow3Layout = new javax.swing.GroupLayout(plTimeRow3);
-        plTimeRow3.setLayout(plTimeRow3Layout);
-        plTimeRow3Layout.setHorizontalGroup(
-            plTimeRow3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 370, Short.MAX_VALUE)
-        );
-        plTimeRow3Layout.setVerticalGroup(
-            plTimeRow3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
+        plTimeRow3.setLayout(new java.awt.GridLayout(1, 1));
         plTime.add(plTimeRow3);
 
         getContentPane().add(plTime);
@@ -182,9 +162,24 @@ public class ClockDisplay extends javax.swing.JFrame
 
     private void onRn2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_onRn2ActionPerformed
     {//GEN-HEADEREND:event_onRn2ActionPerformed
+
         if(rbRow2.isSelected())
         {
+            System.out.println("In here");
+            int add = Integer.parseInt(JOptionPane.showInputDialog("+Stunden"));
+            LocalTime time = c1.getTime();
+            time = time.plusHours(add);
+            System.out.println(time);
+            c2 = new Clock(time);
+            plTimeRow2.add(c2);
+            t2 = new Thread(c2);
             
+            t2.start();
+        }
+        else
+        {
+            t2.stop();
+            plTimeRow2.remove(c2);
         }
     }//GEN-LAST:event_onRn2ActionPerformed
 

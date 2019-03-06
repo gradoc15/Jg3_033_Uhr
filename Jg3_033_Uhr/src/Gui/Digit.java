@@ -38,7 +38,6 @@ public class Digit extends JLabel
         icon = this.getClass().getResource("/img/"+z+".png").getPath();
         this.setIcon(new ImageIcon(icon));
         number = z;
-//        this.setText(""+number);
     }
     
     public boolean addOne()
