@@ -23,9 +23,9 @@ public class Digit extends JLabel
     public Digit(int max)
     {
         this.max = max;
-         icon = this.getClass().getResource("/img/0.png").getPath();
+        // icon = this.getClass().getResource("img/0.png").getPath();
          number = 0;
-         this.setIcon(new ImageIcon(icon));
+         this.setIcon(new ImageIcon("img/0.png"));
          this.setOpaque(true);
          this.setBackground(Color.black);
          
@@ -35,8 +35,8 @@ public class Digit extends JLabel
     {
         if(z > 9 || z < 0)
             throw new Exception("Invalid number");
-        icon = this.getClass().getResource("/img/"+z+".png").getPath();
-        this.setIcon(new ImageIcon(icon));
+        //icon = this.getClass().getResource("img/"+z+".png").getPath();
+        this.setIcon(new ImageIcon("img/"+z+".png"));
         number = z;
     }
     
@@ -59,8 +59,8 @@ public class Digit extends JLabel
     
     public void update()
     {
-        icon = this.getClass().getResource("/img/" + number + ".png").getPath();
-        this.setIcon(new ImageIcon(icon));
+        //icon = this.getClass().getResource("img/" + number + ".png").getPath();
+        this.setIcon(new ImageIcon("img/"+number+".png"));
         repaint();
     }
     

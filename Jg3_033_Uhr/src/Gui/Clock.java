@@ -42,16 +42,15 @@ public class Clock extends JPanel implements Runnable
         this.setLayout(new GridLayout(1, 8));
         
         ini();
-       
     }
     
     public void ini()
     {
-        String icon = this.getClass().getResource("/img/blank.png").getPath();
+        //String icon = this.getClass().getResource("/img/blank.png").getPath();
         JLabel blank1 = new JLabel();
         JLabel blank2 = new JLabel();
-        blank1.setIcon(new ImageIcon(icon));
-        blank2.setIcon(new ImageIcon(icon));
+        blank1.setIcon(new ImageIcon("img/dp.png"));
+        blank2.setIcon(new ImageIcon("img/dp.png"));
         blank1.setOpaque(true);
         blank2.setOpaque(true);
         blank1.setBackground(Color.black);

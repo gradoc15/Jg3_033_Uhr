@@ -29,8 +29,8 @@ public class ClockDisplay extends javax.swing.JFrame
     {
         initComponents();
        
-        String icon = this.getClass().getResource("/img/clock.png").getPath();
-        lbClock.setIcon(new ImageIcon(icon));
+        //String icon = this.getClass().getResource("/img/clock.png").getPath();
+        lbClock.setIcon(new ImageIcon("img/clock.png"));
         
         
         c1 = new Clock(LocalTime.now());
